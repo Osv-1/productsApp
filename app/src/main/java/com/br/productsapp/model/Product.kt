@@ -3,7 +3,7 @@ package com.br.productsapp.model
 import java.math.BigDecimal
 
 data class Product(
-    val nome: String,
-    val descricao: String,
-    val valor: BigDecimal
+    val name: String,
+    val description: String,
+    val price: BigDecimal
 )
