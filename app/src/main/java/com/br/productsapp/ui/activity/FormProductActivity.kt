@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.br.productsapp.R
+import com.br.productsapp.dao.ProductDao
 import com.br.productsapp.model.Product
 import java.math.BigDecimal
 
@@ -35,7 +36,8 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product) {
                 description = desc,
                 price = price
             )
-
+            val dao = ProductDao()
+            dao.add(newProduct)
         }
 
     }

@@ -16,6 +16,7 @@ class ListProductsAdapter(
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun vincula(product: Product) {
+
             val name = itemView.findViewById<TextView>(R.id.tv_name)
             name.text = product.name
 
