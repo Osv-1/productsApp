@@ -1,5 +1,6 @@
 package com.br.productsapp.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import com.br.productsapp.model.Product
 
 class ListProductsAdapter(
     private val context: Context,
-    private val products: List<Product>
+    products: List<Product>
 ) : RecyclerView.Adapter<ListProductsAdapter.ViewHolder>() {
+
+    private val products = products.toMutableList()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun vincula(product: Product) {
@@ -41,5 +44,14 @@ class ListProductsAdapter(
     }
 
     override fun getItemCount(): Int = products.size
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun refresh(products: List<Product>) {
+
+        this.products.clear()
+        this.products.addAll(products)
+        notifyDataSetChanged()
+    }
 
 }

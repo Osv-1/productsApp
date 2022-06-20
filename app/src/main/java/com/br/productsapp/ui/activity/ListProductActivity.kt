@@ -7,32 +7,42 @@ import androidx.recyclerview.widget.RecyclerView
 import com.br.productsapp.R
 import com.br.productsapp.adapter.ListProductsAdapter
 import com.br.productsapp.dao.ProductDao
-import com.br.productsapp.model.Product
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.math.BigDecimal
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class ListProductActivity : AppCompatActivity(R.layout.activity_list_product) {
+
+    private val dao = ProductDao()
+    private val adapter = ListProductsAdapter(
+        context = this, products = dao.findAll()
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        configRecyclerView()
+        configFab()
     }
+
     override fun onResume() {
         super.onResume()
+        adapter.refresh(dao.findAll())
+    }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-
-        val dao = ProductDao()
-
-        recyclerView.adapter = ListProductsAdapter(
-            context = this, products = dao.findAll()
-        )
-
+    private fun configFab() {
         val fabAdd = findViewById<FloatingActionButton>(R.id.fab_add)
         fabAdd.setOnClickListener {
-            val intent = Intent(this, FormProductActivity::class.java)
-            startActivity(intent)
+            goToFormProduct()
         }
+    }
+
+    private fun goToFormProduct() {
+        val intent = Intent(this, FormProductActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun configRecyclerView() {
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.adapter = adapter
+
     }
 
 
