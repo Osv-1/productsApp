@@ -13,9 +13,9 @@ class ProductDao {
         return products.toList()
     }
 
-    companion object {
+    companion object{
         private val products = mutableListOf<Product>()
     }
 
-}
+    }
 

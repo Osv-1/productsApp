@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.br.productsapp.R
 import com.br.productsapp.databinding.ProdutoItemBinding
 import com.br.productsapp.model.Product
 
